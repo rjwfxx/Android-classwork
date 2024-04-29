@@ -1,0 +1,92 @@
+导入androidx . compose . foundation . layout . arrangement
+导入androidx . compose . foundation . layout . column
+导入androidx . compose . foundation . layout . spacer
+导入androidx . compose . foundation . layout . fill maxsize
+导入androidx . compose . foundation . layout . fill maxwidth
+导入androidx . compose . foundation . layout . height
+导入androidx . compose . foundation . layout . padding
+导入androidx . compose . foundation . layout . safedrawingpadding
+导入androidx . compose . foundation . layout . status bars padding
+导入androidx . compose . foundation . rememberscrollstate
+导入androidx . compose . foundation . text . keyboard选项
+导入Android x . compose . foundation . vertical scroll
+导入androidx . compose . material 3 . text
+导入androidx . compose . material 3 . textfield
+导入androidx . compose . runtime . composable
+导入androidx . compose . runtime . getvalue
+导入Android x . compose . runtime . mutable state of
+导入androidx . compose . runtime . remember
+导入androidx . compose . runtime . setvalue
+导入androidx.compose.ui.Alignment
+导入androidx.compose.ui.Modifier
+导入androidx . compose . ui . RES . string resource
+导入androidx . compose . ui . text . input . keyboard type
+导入androidx . compose . ui . tooling . preview . preview
+导入androidx.compose.ui.unit.dp
+导入com.example.rrr.R
+
+
+@可组合
+fun token layout（Modifier:Modifier = Modifier . fill maxsize（））{
+var amount input by remember { mutableStateOf（““）
+var amount = amount input . todoubleornull（）？:0.0
+var token = calculateToken（金额）
+
+列（
+修饰词=修饰词
+。statusBarsPadding（）
+。填充（水平= 40.dp）
+。vertical scroll（rememberScrollState（））
+。safeDrawingPadding（），
+水平对齐=对齐。水平居中，
+垂直排列=排列。中心
+    ){
+文本（
+text = string resource（r . string . ktjf），
+修饰词=修饰词
+。填充（底部= 16.dp，顶部= 40.dp）
+。align（对齐=对齐。开始）
+        )
+编辑数字字段（
+价值=投入量，
+onValueChange = { amountInput = it }，
+修饰词=修饰词
+。填充（底部= 32.dp）
+。fillMaxWidth（）
+        )
+文本（
+
+text = string resource（r . string . t1，token），
+        )
+垫片（修改器=修改器高度（150.dp））
+    }
+}
+
+@可组合
+趣味编辑数字字段（
+值:字符串，
+onValueChange:（String）-》单位，
+修饰语:修饰语=修饰语
+){
+文本字段（
+价值=价值，
+onValueChange = onValueChange，
+修改器=修改器，
+标签= {
+文本（string resource（r . string . need _ token））
+        },
+singleLine = true，
+keyboard options = keyboard options（keyboard type = keyboard type。号码），
+    )
+}
+
+私人娱乐计算token（amount:Double，token percent:Double = 105.0 ）: String {
+价值令牌=令牌百分比/ 100 *金额
+return token.toString（）
+}
+
+@可组合
+@ Preview（show background = true）
+趣味TokenApp（）{
+令牌布局（）
+}
